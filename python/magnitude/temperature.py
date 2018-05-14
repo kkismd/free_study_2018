@@ -1,27 +1,27 @@
 from typing import Union
-Numeric = Union[int,float]
+numeric = Union[int,float]
 
 class Temperature:
-  def __init__(self, celsius: Numeric) -> None:
-    self._celsius: Numeric = celsius
+  def __init__(self, celsius: numeric) -> None:
+    self._celsius: numeric = celsius
 
   @classmethod
-  def from_celsius(cls, num: Numeric) -> 'Temperature':
+  def from_celsius(cls, num: numeric) -> 'Temperature':
     return cls(num)
 
   @classmethod
-  def from_fahrenheit(cls, num: Numeric) -> 'Temperature':
+  def from_fahrenheit(cls, num: numeric) -> 'Temperature':
     return cls(cls.f2c(num))
 
   @staticmethod
-  def f2c(f: Numeric) -> float:
+  def f2c(f: numeric) -> float:
     return (f - 32) / 1.8
 
   @staticmethod
-  def c2f(c: Numeric) -> float:
+  def c2f(c: numeric) -> float:
     return c * 1.8 + 32
 
-  def celsius(self) -> Numeric:
+  def celsius(self) -> numeric:
     return self._celsius
 
   def fahrenheit(self) -> float:
