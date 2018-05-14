@@ -1,5 +1,5 @@
 export class Temperature {
-  _celsius: number;
+  private _celsius: number;
   constructor(celsius: number) {
     this._celsius = celsius;
   }
@@ -37,28 +37,32 @@ export class Temperature {
   }
 }
 
+/** Testing */
+
 function is(a: number|string, b: number|string): void {
   if (a !== b) {
     console.log("%s is not %s", a.toString(), b.toString());
   }
 }
 
-const zero_c = Temperature.fromCelsius(0);
+const zero_c: Temperature = Temperature.fromCelsius(0);
 is(zero_c.celsius(), 0);
 is(zero_c.fahrenheit(), 32);
 
-const zero_f = Temperature.fromFahrenheit(32);
+const zero_f: Temperature = Temperature.fromFahrenheit(32);
 is(zero_f.celsius(), 0);
 is(zero_f.fahrenheit(), 32);
 
-const handred_c = Temperature.fromCelsius(100);
+const handred_c: Temperature = Temperature.fromCelsius(100);
 is(handred_c.celsius(), 100);
 is(handred_c.fahrenheit(), 212);
 
-const handred_f = Temperature.fromFahrenheit(212);
+const handred_f: Temperature = Temperature.fromFahrenheit(212);
 is(handred_f.celsius(), 100);
 is(handred_f.fahrenheit(), 212);
 
 is(zero_c.celsiusLabel(), "摂氏0度");
 is(zero_f.fahrenheitLabel(), "華氏32度");
 
+const error_t: Temperature = Temperature.fromCelsius("foo");
+is(error_t.celsius(), 0);
